@@ -1,24 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import Navbar from "./Components/Navbar";
+import { Routes , Route } from "react-router-dom";
+import Home from "./Pages/Home";
+import FetchData from "./Components/FetchData";
+import SearchPage from "./Pages/SearchPage";
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+    <Navbar/>
+    <Routes>
+      <Route path="/" element={<Home/>}/>
+      <Route path="general" element={<FetchData ele="general"/>}/>
+      <Route path="business" element={<FetchData ele="business"/>}/>
+      <Route path="entertainment" element={<FetchData ele="entertainment"/>}/>
+      <Route path="health" element={<FetchData ele="health"/>}/>
+      <Route path="science" element={<FetchData ele="science"/>}/>
+      <Route path="sports" element={<FetchData ele="sports"/>}/>
+      <Route path="technology" element={<FetchData ele="technology"/>}/>
+      <Route path="/SearchPage" element={<SearchPage/>}/>
+    </Routes>
+    </>
   );
 }
 
