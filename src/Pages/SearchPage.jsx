@@ -26,7 +26,9 @@ const SearchPage = () => {
 
     return (
         <div className='container my-4'>
-            <input type='text' placeholder='  Search ...' value={searchQuery} onChange={handleSearchData} style={{width:"800px", paddingLeft:"20px", height:"40px" , border:"2px solid gray" , borderRadius:"10px"}}/>
+            <div style={{justifyContent:"center" , alignItems:"center" , display:"flex"}}>
+            <input type='text' placeholder='  Search ...' value={searchQuery} onChange={handleSearchData} style={{width:"300px", paddingLeft:"20px", height:"40px" , border:"2px solid gray" , borderRadius:"10px"}}/>
+            </div>
             <div className='my-5 row'>
                 {searchData.length > 0 ? (
                     searchData.map((article, index) => (
@@ -42,7 +44,7 @@ const SearchPage = () => {
                         </div>
                     ))
                 ) : (
-                    <p style={{fontSize:"30px"}}>Please Enter value </p>
+                    <p style={{fontSize:"30px"}}>Search up,<span style={{color:"red"}}> whatever</span> you want <span style={{color:"red"}}> ....</span> </p>
                 )}
             </div>
         </div>

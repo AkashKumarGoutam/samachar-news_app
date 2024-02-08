@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
+import CardSimmerEffect from './CardSimmerEffect'
 
 const FetchData = ({ele}) => {
     const[data , setData]=useState("")
@@ -12,27 +13,32 @@ const FetchData = ({ele}) => {
     useEffect(() => {
       fetchData()
     }, [ele])
+
+    if(data.length===0){
+      return <CardSimmerEffect/>
+    }
     
 
   return (
     <div className='container my-4 '>
-        <h3>TOP HEADLINES . . . .</h3>
-        <div className='my-5 row '>{data? data.map((element) => 
-        <>
-        <div className='col-md-4 mb-5 d-flex justify-content-center align-items-center'>
-        <div className="card shadow rounded-5 " style={{width: "18rem"}}>
-            <img src={element.urlToImage || "https://upload.wikimedia.org/wikipedia/commons/d/d1/Image_not_available.png"} style={{height:"200px"}} className="card-img-top" alt="..."/>
-            <div className="card-body">
-                <h5 className="card-title">{element.title? element.title.slice(0,30) :"sorry Titles are not avilable "}</h5>
-                <p className="card-text">{element.description? element.description.slice(0, 40): "Sorry description are not available"}</p>
-                <a href={element.url} target='blank' className="btn btn-primary">Read More</a>
+    <h3>TOP HEADLINES . . . .</h3>
+    <div className='my-5 row '>
+        {data.map((element, index) => (
+            <div key={index} className='col-md-4 mb-5 d-flex justify-content-center align-items-center'>
+                <div className="card shadow rounded-5 " style={{ width: "18rem" }}>
+                    <img src={element.urlToImage || "https://upload.wikimedia.org/wikipedia/commons/d/d1/Image_not_available.png"} style={{ height: "200px" }} className="card-img-top" alt="..." />
+                    <div className="card-body">
+                        <h5 className="card-title">{element.title ? element.title.slice(0, 30) : "sorry Titles are not available "}</h5>
+                        <p className="card-text">{element.description ? element.description.slice(0, 40) : "Sorry description are not available"}</p>
+                        <a href={element.url} target='blank' className="btn btn-primary">Read More</a>
+                    </div>
+                </div>
             </div>
-         </div>
-         </div>
-        </>
-        ):"Loding..."}</div>
+        ))}
     </div>
-  )
+</div>
+);
 }
+
 
 export default FetchData

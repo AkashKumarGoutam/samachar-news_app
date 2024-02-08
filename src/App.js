@@ -3,12 +3,15 @@ import { Routes , Route } from "react-router-dom";
 import Home from "./Pages/Home";
 import FetchData from "./Components/FetchData";
 import SearchPage from "./Pages/SearchPage";
+import Footer from "./Components/Footer";
+import ScrollToTop from "./Components/ScrollToTop";
 
 
 function App() {
   return (
     <>
     <Navbar/>
+    <ScrollToTop/>
     <Routes>
       <Route path="/" element={<Home/>}/>
       <Route path="general" element={<FetchData ele="general"/>}/>
@@ -20,6 +23,7 @@ function App() {
       <Route path="technology" element={<FetchData ele="technology"/>}/>
       <Route path="/SearchPage" element={<SearchPage/>}/>
     </Routes>
+    <Footer/>
     </>
   );
 }
