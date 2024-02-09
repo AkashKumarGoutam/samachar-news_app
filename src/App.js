@@ -5,11 +5,13 @@ import FetchData from "./Components/FetchData";
 import SearchPage from "./Pages/SearchPage";
 import Footer from "./Components/Footer";
 import ScrollToTop from "./Components/ScrollToTop";
+import InternetCheck from "./Components/InternetCheck";
 
 
 function App() {
   return (
     <>
+    <InternetCheck/>
     <Navbar/>
     <ScrollToTop/>
     <Routes>
